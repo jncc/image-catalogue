@@ -1,0 +1,88 @@
+File_Name: 20150508_Output.xlsx
+Species_of_Note_Workbook: Z:\Marine\Evidence\BenthicDataMgmt\Image catalogue\batch_tagging_tool\species_of_note.xlsx
+Analysis_Workbook:
+  Path: X:\OffshoreSurvey\SurveyData\2014_10_RVScotia_1714S_SolanBank\GroundTruthing\PhotoStation\ProcessedData\20150508 Proforma_Stills analysis FINAL.xlsx
+  Sheet_Name: Stills Form
+  Field_Row: 1
+  Data_Starts_at_Row_Number: 2
+Species_Matrix:
+  Path: X:\OffshoreSurvey\SurveyData\2014_10_RVScotia_1714S_SolanBank\GroundTruthing\PhotoStation\ProcessedData\20150505 Proforma_SpeciesMatrix Stills FINAL.xlsx
+  Sheet_Name: Stills matix_abun%cover
+  Species_Name_Column_Number: 1
+  Blank_Entry_Looks_Like:
+Fields:
+# Name of output field:
+#   - [Functions to be run on data]
+#   - Name of input field(s) or static value    (case insensitive)
+  "photoshop:Credit":
+    - [Mandatory Check]
+    - JNCC, MSS
+  "dc:rights":
+    - [Mandatory Check]
+    - © Joint Nature Conservation Committee and MSS
+  "xmpRights:UsageTerms":
+    - [Mandatory Check]
+    - Available under the UK Open Government License v3
+  "dc:description":
+    - [Get Data from Field, Mandatory Check]
+    - "Habitat Description (Simple): includes zone, substrate, community, depth, litter, trawl marks, physical damage, biotope fit, imagery quality comments. If problems with ID - why?"
+  "GPSLongitudeRef":
+    - [Get Data from Field, Get Longitude Direction]
+    - Fix Long Dec
+  "GPSLongitude":
+    - [Get Data from Field, absolute value]
+    - Fix Long Dec
+  "GPSLatitudeRef":
+    - [Get Data from Field, Get Latitude Direction]
+    - Fix Lat Dec
+  "GPSLatitude":
+    - [Get Data from Field, absolute value]
+    - Fix Lat Dec
+  "XMP-iptcExt:LocationShownCity":
+    - []
+    - ""
+  "XMP-iptcExt:LocationShownCountryName":
+    - []
+    - Offshore Scotland
+  "XMP-iptcExt:LocationShownLocationName":
+    - []
+    - Solan Bank
+  "XMP-JNCC:speciesOfNote|list":
+    - [Get Species of Note]
+    -  ""
+  "dwc:vernacularName|list":
+    - [Get Common Name of Species]
+    - "XMP-JNCC:speciesOfNote|list"
+  "XMP-JNCC:annex1Feature":
+    - []
+    - ''
+  "XMP-JNCCMarineSurvey:surveyCode":
+    - [Mandatory Check]
+    - 20150508
+  "XMP-JNCCMarineSurvey:stationCode":
+    - [Get Data from Field, Mandatory Check]
+    - Station code
+  "XMP-JNCCMarineSurvey:imageNumber":
+    - [Find regex matches, Mandatory Check]
+    - [Still Sample Ref, '(\d*)$']
+  "XMP-JNCCMarineSurvey:EUNIS07Code|list":
+    - []
+    - ''
+  "XMP-JNCCMarineSurvey:MNCR1503Code|list":
+    - [Get Data from Field, Handle MNCR Code]
+    - MNCR code
+  "XMP-JNCCMarineSurvey:PMF":
+    - []
+    - ""
+  "XMP-JNCCMarineSurvey:HOCI":
+    - []
+    - ""
+  "XMP-JNCCMarineSurvey:OSPARHabitat":
+    - []
+    - ""
+  "XMP-JNCCMarineSurvey:VME":
+    - []
+    - ""
+  "XMP-JNCCMarineSurvey:anthropogenicActivities":
+    - [Get Data from Field]
+    - Evidence of Human Impact

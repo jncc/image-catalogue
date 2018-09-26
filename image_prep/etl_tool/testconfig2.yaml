@@ -1,0 +1,100 @@
+File_Name: null
+Species_of_Note_Workbook: null
+Analysis_Workbook:
+  Path: null
+  Sheet_Name: null
+  Field_Row: null
+  Data_Starts_at_Row_Number: null
+Species_Matrix:
+  Path: null
+  Sheet_Name: null
+  Species_Name_Column_Number: null
+  Blank_Entry_Looks_Like: null
+Fields:
+  dcterms:title:
+  - []
+  - ''
+  'photoshop:Credit ':
+  - []
+  - ''
+  dc:rights:
+  - []
+  - ''
+  xmpRights:UsageTerms:
+  - []
+  - ''
+  dcterms:rights:
+  - []
+  - ''
+  dc:accessRights:
+  - []
+  - ''
+  dc:description:
+  - []
+  - ''
+  XMP-ac:caption:
+  - []
+  - ''
+  GPSLongitudeRef:
+  - []
+  - ''
+  GPSLongitude:
+  - []
+  - ''
+  GPSLatitudeRef:
+  - []
+  - ''
+  GPSLatitude:
+  - []
+  - ''
+  XMP-iptcExt:LocationShownCity:
+  - []
+  - ''
+  XMP-iptcExt:LocationShownCountryName:
+  - []
+  - ''
+  XMP-iptcExt:LocationShownLocationName:
+  - []
+  - ''
+  XMP-dwc:scientificName|list:
+  - []
+  - ''
+  XMP-dwc:vernacularName|list:
+  - []
+  - ''
+  XMP-JNCC:annex1Feature:
+  - []
+  - ''
+  XMP-JNCC:EUNIS07Code|list:
+  - []
+  - ''
+  XMP-JNCCMarineSurvey:surveyCode:
+  - []
+  - ''
+  XMP-JNCCMarineSurvey:stationCode:
+  - []
+  - ''
+  XMP-JNCCMarineSurvey:imageNumber:
+  - []
+  - ''
+  XMP-JNCCMarineSurvey:stillReference:
+  - []
+  - ''
+  XMP-JNCCMarineSurvey:MNCR1503Code|list:
+  - []
+  - ''
+  XMP-JNCCMarineSurvey:PMF:
+  - []
+  - ''
+  XMP-JNCCMarineSurvey:HOCI:
+  - []
+  - ''
+  XMP-JNCCMarineSurvey:OSPARHabitat:
+  - []
+  - ''
+  XMP-JNCCMarineSurvey:VME:
+  - []
+  - ''
+  XMP-JNCCMarineSurvey:anthropogenicActivities:
+  - []
+  - ''

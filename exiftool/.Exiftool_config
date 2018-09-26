@@ -1,0 +1,71 @@
+%Image::ExifTool::UserDefined = (
+    'Image::ExifTool::XMP::Main' => {
+        JNCCMarineSurvey => {
+            SubDirectory => {
+                TagTable => 'Image::ExifTool::UserDefined::JNCCMarineSurvey',
+            },
+        },
+        JNCC => {
+            SubDirectory => {
+                TagTable => 'Image::ExifTool::UserDefined::JNCC',
+            },
+        },
+        ac => {
+            SubDirectory => {
+                TagTable => 'Image::ExifTool::UserDefined::ac',
+            },
+        },
+        dcterms => {
+            SubDirectory => {
+                TagTable => 'Image::ExifTool::UserDefined::dcterms',
+            },
+        },
+    },
+    'Image::ExifTool::DarwinCore::Main' => {
+        scientificName => {List => 'bag'},
+        vernacularName => {List => 'bag'},
+    },
+);
+
+%Image::ExifTool::UserDefined::JNCCMarineSurvey = (
+        GROUPS => {0 => 'XMP', 1 => 'XMP-JNCCMarineSurvey', 2=> 'Image'},
+        NAMESPACE => { 'JNCCMarineSurvey' => 'http://jncc.gov.uk'},
+        WRITABLE => 'string',
+        surveyCode => { WRITABLE => 'string' },
+        stationCode => { WRITABLE => 'string' },
+        imageNumber => { WRITABLE => 'string' },
+        stillReference => {WRITABLE => 'string' },
+        PMF => { WRITABLE => 'string' },
+        HOCI => { WRITABLE => 'string' },
+        OSPARHabitat => { WRITABLE => 'string' },
+        VME => { WRITABLE => 'string' },
+        anthropogenicActivities => { WRITABLE => 'string' },
+);
+
+%Image::ExifTool::UserDefined::JNCC = (
+        GROUPS => {0 => 'XMP', 1 => 'XMP-JNCC', 2=> 'Image'},
+        NAMESPACE => { 'JNCC' => 'http://jncc.gov.uk'},
+        WRITABLE => 'string',
+        EUNIS07Code => { List => 'seq'},
+        MNCR1503Code => { List => 'seq'}, 
+        annex1Feature => {WRITABLE => 'string'},
+);
+
+%Image::ExifTool::UserDefined::ac = (
+        GROUPS => {0 => 'XMP', 1 => 'XMP-ac', 2=> 'Image'},
+        NAMESPACE => {'Audbon core' => 'https://www.tdwg.org/standards/ac/'},
+        WRITABLE => 'string',
+        caption => {WRITABLE => 'string'},
+        metadataLanguage => {WRITABLE => 'string'},
+        metadataLanguageLiteral => {WRITABLE => 'string'},
+);
+
+%Image::ExifTool::UserDefined::dcterms = (
+        GROUPS => {0 => 'XMP', 1 => 'XMP-dcterms', 2=> 'Image'},
+        NAMESPACE => {'Dublin core DCMI Metadata terms' => 'http://dublincore.org/documents/dcmi-terms/'},
+        WRITABLE => 'string',
+        Type => {WRITABLE => 'string'},
+        Rights => {WRITABLE => 'string'},
+        accessRIghts => {WRITABLE => 'string'},
+);
+
