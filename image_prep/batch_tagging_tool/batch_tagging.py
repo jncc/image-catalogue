@@ -86,7 +86,7 @@ if __name__ == '__main__':
         print(f'    copying {oldPath}')
         shutil.copy2(oldPath, row['NewPath'])
 
-    # #   2) Identify list features within image proforma, change data type, and remove identifier flag from column name
+    #   2) Identify list features within image proforma, change data type, and remove identifier flag from column name
 
     for eachVal in imageProforma.columns.values:
         if '|list' in eachVal:
