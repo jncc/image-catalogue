@@ -5,6 +5,7 @@ from string import ascii_uppercase
 from osgeo import ogr, osr
 from re import findall
 from translation_dictionaries import *
+import os
 from tkinter import filedialog
 
 
@@ -305,12 +306,32 @@ def common_name_list(species_of_note_field_name):
 
     return common_names[1:]
 
+
 def jncc_to_eunis(jncc_code):
-	return dict_jncc_to_eunis[jncc_code]
-	
+    jncc_code = jncc_code[0]
+    eunis_code = None
+    if jncc_code is not None:
+        while len(jncc_code) > 0:
+            if jncc_code in dict_jncc_to_eunis:
+                eunis_code = dict_jncc_to_eunis[jncc_code]
+                break
+            else:
+                jncc_code = jncc_code[:-1]
+    return [eunis_code]
+
+
 def eunis_to_jncc(eunis_code):
-	return dict_eunis_to_jncc[eunis_code]
-	
+    eunis_code = eunis_code[0]
+    jncc_code = None
+    if eunis_code is not None:
+        while len(eunis_code) > 0:
+            if eunis_code in dict_eunis_to_jncc:
+                jncc_code = dict_eunis_to_jncc[eunis_code]
+                break
+            else:
+                eunis_code = eunis_code[:-1]
+    return [jncc_code]
+
 
 # Relates function names from config to functions in code, each must take the analysis, row and the data from config as parameters
 NAME_TO_FUNCTION = {
@@ -354,8 +375,9 @@ def convert_from_number_to_excel_letter(number):
 if __name__ == '__main__':
     # Load config and spreadsheets
     ## TODO  - Handle yaml file drops or else prompt user
-    config_path = filedialog.askopenfilename(title = "Select input YAML file", filetypes = (('YAML files','*.yaml')))
+    config_path = r"W:\ImageCatalogue_prep\Surveys\2014_10_RVScotia_1714S_SolanBank\etlconfig.yaml"
     config = import_config(config_path)
+    config_dir = os.path.dirname(config_path)
     analysis = load_workbook(config['Analysis_Workbook']['Path'])[config['Analysis_Workbook']['Sheet_Name']]
     species_matrix = load_workbook(config['Species_Matrix']['Path'])[config['Species_Matrix']['Sheet_Name']]
     species_of_note_workbook = load_workbook(config['Species_of_Note_Workbook']).active
@@ -391,5 +413,8 @@ if __name__ == '__main__':
             current_row[field] = data
             # Output to final sheet
             new_sheet[convert_from_number_to_excel_letter(column_index + 1) + str(row_index + 2)] = data
+    # Add blank FilePath column
+    new_sheet.insert_cols(1)
+    new_sheet['A1'] = 'FilePath'
     # Save output file
-    new_metadata_workbook.save(config['File_Name'])
+    new_metadata_workbook.save(os.path.join(config_dir, config['File_Name']))
