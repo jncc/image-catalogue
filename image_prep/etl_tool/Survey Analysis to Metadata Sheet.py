@@ -2,7 +2,7 @@ import yaml
 from openpyxl import load_workbook, Workbook
 from openpyxl.utils import get_column_letter
 from string import ascii_uppercase
-from osgeo import ogr, osr
+#from osgeo import ogr, osr
 from re import findall
 from translation_dictionaries import *
 import os
@@ -112,8 +112,10 @@ def iter_rows_until_blank(sheet, min_row=0, max_row=float('inf')):
     """
     count = min_row - 1
     values = list(sheet.values)
+    print(values)
     while count <= max_row:
         try:
+            print(f'{count}:{max_row}')
             current_row = values[count]
         except IndexError:
             raise StopIteration
@@ -269,13 +271,13 @@ def get_indices_for_noted_species():
     return relations
 
 
-def get_species_of_note(data):
+def get_species_of_note(still_ref_field_name):
     """
     Returns any species in the species of note list that are found in a given column
     """
     noted_species_present = ''
     for column_index in range(len(species_matrix_values[0]) - config['Species_Matrix']['Species_Name_Column_Number']):
-        if get_data_from_field('Still Sample Ref')[0] == species_matrix_values[0][column_index]:
+        if get_data_from_field(still_ref_field_name)[0] == species_matrix_values[0][column_index]:
             for species_of_note_index in INDEX_TO_SPECIES_OF_NOTE:
                 if species_matrix_values[species_of_note_index][column_index] != config['Species_Matrix']['Blank_Entry_Looks_Like']:
                     noted_species_present += INDEX_TO_SPECIES_OF_NOTE[species_of_note_index] + '|'
@@ -348,8 +350,8 @@ NAME_TO_FUNCTION = {
     'find regex matches': find_regex_matches,
     'absolute value': check_all_arguments_are_floats(turn_data_to_args(abs)),
     'get common name of species': common_name_list,
-	'jncc to eunis': jncc_to_eunis,
-	'eunis to jncc': eunis_to_jncc
+    'jncc to eunis': jncc_to_eunis,
+    'eunis to jncc': eunis_to_jncc
 }
 
 
@@ -375,7 +377,8 @@ def convert_from_number_to_excel_letter(number):
 if __name__ == '__main__':
     # Load config and spreadsheets
     ## TODO  - Handle yaml file drops or else prompt user
-    config_path = r"W:\ImageCatalogue_prep\Surveys\2014_10_RVScotia_1714S_SolanBank\etlconfig.yaml"
+    config_path = input("Paste path to YAML: ")
+    config_path = config_path.strip("'").strip('"')
     config = import_config(config_path)
     config_dir = os.path.dirname(config_path)
     analysis = load_workbook(config['Analysis_Workbook']['Path'])[config['Analysis_Workbook']['Sheet_Name']]
